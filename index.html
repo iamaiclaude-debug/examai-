@@ -577,7 +577,7 @@ async function generateQuestions(){
   const prompt=`Expert Indian exam question generator.\nExam: ${examCtx}\n${selSubject?'Subject: '+selSubject:''}\nDifficulty: ${diffM[diff]}\nLanguage: ${langM[lang]}\n${topicCtx}\nGenerate: ${typeI[qType]}\nRespond ONLY JSON no markdown:\n{"questions":[{"type":"mcq","question":"...","options":["A) ...","B) ...","C) ...","D) ..."],"answer":"A) ..."},{"type":"short","question":"...","options":[],"answer":"..."}]}`;
   try{
     // ⚠️ YAHAN APNA WORKER URL DAALO (Step 2 mein milega)
-    const WORKER_URL='https://examai-worker.examailearner.workers.dev/';
+    const WORKER_URL='https://examai-worker.examailearner.workers.dev';
     const res=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
     if(!res.ok) throw new Error('Server error: '+res.status);
     const data=await res.json();
